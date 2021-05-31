@@ -1,29 +1,8 @@
-import React from "react";
-import { useEffect, useState, useRef } from "react";
-import { reqResApi } from "../api/reqRes";
-import { ReqResList, User } from "../interfaces/reqRes";
+import { useUsuarios } from "../hooks/useUsuarios";
+import { User } from "../interfaces/reqRes";
 
 export const Usuarios = () => {
-  const [users, setUsuarios] = useState<User[]>([]);
-  const paginaRef = useRef(1);
-
-  useEffect(() => {
-    cargarUsuarios();
-  }, []);
-
-  const cargarUsuarios = async () => {
-    const resp = await reqResApi.get<ReqResList>("/users", {
-      params: {
-        page: paginaRef.current,
-      },
-    });
-    if (resp.data.data.length > 0) {
-      setUsuarios(resp.data.data);
-      paginaRef.current++;
-    } else {
-      alert("No hay más registros");
-    }
-  };
+  const { users, paginaAnterior, paginaSiguiente } = useUsuarios();
 
   const renderItem = ({ id, first_name, last_name, email, avatar }: User) => {
     return (
@@ -61,8 +40,11 @@ export const Usuarios = () => {
         </thead>
         <tbody>{users.map(renderItem)}</tbody>
       </table>
-
-      <button className="btn btn-primary" onClick={cargarUsuarios}>
+      <button className="btn btn-primary" onClick={paginaAnterior}>
+        Anteriores
+      </button>
+      &nbsp;
+      <button className="btn btn-primary" onClick={paginaSiguiente}>
         Siguientes
       </button>
     </>
