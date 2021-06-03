@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // flexDirection: 'column-reverse',
+    // flexWrap: 'wrap'
     // justifyContent: 'center',
     // alignItems: 'flex-start',
     backgroundColor: '#9ad6e0',
