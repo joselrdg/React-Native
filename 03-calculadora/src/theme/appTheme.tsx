@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontSize: 60,
     textAlign: 'right',
+    marginBottom: 10,
   },
   resultadoPequeno: {
     color: 'rgba(255,255,255,0.5)',
@@ -33,7 +34,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#2D2D2D',
     borderRadius: 100,
     justifyContent: 'center',
-    marginHorizontal: 10
+    marginHorizontal: 10,
   },
   botonTexto: {
     textAlign: 'center',
